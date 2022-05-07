@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+section {
+  scroll-snap-align: start;
+}
+
+.op {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), transparent),
+    url(Images/WelcomeBg.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 0 8%;
+  position: fixed;
+}
+nav {
+  display: flex;
+  width: 55%;
+  margin-left: 54%;
+  padding-top: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 5px, 0;
+}
+nav ul {
+  flex: 1;
+  text-align: right;
+  padding-right: 30px;
+}
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 30px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+nav ul li a::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(255, 255, 255);
+  transition: width 0.2s;
+}
+nav ul li a:hover::after {
+  width: 50%;
+}
+.text-box {
+  color: #fff;
+  position: absolute;
+  bottom: 8%;
+}
+.text-box:hover {
+  cursor: default;
+}
+
+.text-box p {
+  font-size: 40px;
+  font-weight: 600;
+}
+.text-box h1 {
+  font-size: 160px;
+  line-height: 140px;
+  margin-left: -10px;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  background: url(Images/Design.png);
+  -webkit-background-clip: text;
+  background-position: 0 0;
+  animation: gg 10s linear infinite;
+}
+@keyframes gg {
+  100% {
+    background-position: 2000px 0;
+  }
+}
+.text-box a {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+.text-box a::after {
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+}
+.Menu_button {
+  display: none;
+}
+
+@media (max-width: 50em) {
+  .navbar {
+    position: fixed;
+    z-index: 9999;
+    background: hsl(0 0% 100% / 0.15);
+    backdrop-filter: blur(0.5rem);
+    border-radius: 20px;
+    inset: 0 0 0 65%;
+    display: flex;
+    flex-direction: column;
+    padding: min(30vh, 10rem) 3em 0 0;
+    align-items: flex-start;
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+  }
+
+  .navbar[data-visible="true"] {
+    transform: translateX(0%);
+  }
+
+  .Menu_button {
+    position: absolute;
+    display: block;
+    z-index: 99999;
+    background-color: transparent;
+    background-image: url("Images/menu.png");
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+    width: 1.5rem;
+    border: 0;
+    aspect-ratio: 1;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .Menu_button[aria-expanded="true"] {
+    background-image: url("Images/menu.png");
+  }
+
+  .text-box p {
+    font-size: 15px;
+  }
+
+  .text-box h1 {
+    font-size: 75px;
+    line-height: 90px;
+  }
+}
